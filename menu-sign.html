@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ป้ายเมนู | Neo Nana Sign</title>
+  <link rel="stylesheet" href="product.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="นีโอ นานา ป้าย - ผู้เชี่ยวชาญด้านงานป้าย">
+<meta property="og:description" content="ออกแบบ ผลิต ติดตั้งงานป้ายทุกชนิด ครบวงจรในที่เดียว">
+<meta property="og:image" content="https://yourwebsite.com/cover.jpg">
+<meta property="og:url" content="https://yourwebsite.com">
+<meta property="og:type" content="website">
+
+
+</head>
+<body>
+
+  <header></header>
+
+<nav>
+  <div class="logo-left">
+    <img src="images/logo.png" alt="Neo Nana Logo">
+    <span>นีโอ นานา ป้าย</span>
+  </div>
+
+  <div class="menu">
+    <a href="index.html">หน้าแรก</a>
+    <a href="services.html">บริการ/นโยบาย</a>
+    <a href="history.html">ประวัติ</a>
+    <a href="sale.html">ฝ่ายขาย</a>
+    <a href="vision.html">วิสัยทัศน์</a>
+  </div>
+</nav>
+
+  <div class="main-container">
+    <section class="section2">
+      <h1>ป้ายเมนู</h1>
+    </section>
+
+  <!-- แกลเลอรี -->
+  <section class="gallery-box">
+    <div class="gallery-grid" id="gallery"></div>
+  </section>
+
+  <!-- ✅ Lightbox HTML -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="lightbox image" />
+  <span class="prev" onclick="prevImage()">&#10094;</span>
+  <span class="next" onclick="nextImage()">&#10095;</span>
+</div>
+
+  <!-- ✅ Script ย้ายมาไว้ตรงนี้ -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const folders = [
+    { path: "review-menu/menu/", count: 100 },
+  ];
+
+  const galleryContainer = document.getElementById("gallery");
+  const images = [];
+
+  let index = 0;
+
+  folders.forEach(folder => {
+    for (let i = folder.count; i >= 1; i--) {
+
+      const img = document.createElement("img");
+      img.src = `${folder.path}${i}.jpg`;
+      img.alt = `รวมผลงานป้ายทุกชนิด ${index + 1}`;
+      const currentIndex = index++;
+
+      img.onload = () => {
+        galleryContainer.appendChild(img);
+        images[currentIndex] = img;
+        img.addEventListener("click", () => showImage(currentIndex));
+      };
+
+      img.onerror = () => {
+        console.log(`รูปไม่พบ: ${folder.path}${i}.jpg`);
+      };
+    }
+  });
+
+  // ===== Lightbox =====
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = lightbox.querySelector("img");
+  const closeBtn = lightbox.querySelector(".close");
+  const prevBtn = lightbox.querySelector(".prev");
+  const nextBtn = lightbox.querySelector(".next");
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+    lightboxImg.src = images[currentIndex].src;
+    lightbox.style.display = "flex";
+  }
+
+  closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+  prevBtn.addEventListener("click", () => showImage(currentIndex - 1));
+  nextBtn.addEventListener("click", () => showImage(currentIndex + 1));
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "flex") {
+      if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+      if (e.key === "ArrowRight") showImage(currentIndex + 1);
+      if (e.key === "Escape") lightbox.style.display = "none";
+    }
+  });
+
+  // ปิดเมื่อคลิกพื้นที่มืด
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+});
+</script>
+
+
+
+
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>บริษัท นีโอนานาป้าย</h3>
+        <p>ป้ายไวนิล, สติ๊กเกอร์, ฉลากสินค้า, ติดรถ, ติดกระจก, ตู้ไฟ, พลาสวูด</p>
+        <p>ฟิวเจอร์บอร์ด, อักษรโลหะ, ป้ายคัทเอ๊าท์, โรลอัพ-เอ็กซ์สแตน, ธงญี่ปุ่น</p>
+        <p>ป้ายเมนู, โครงไม้-โครงเหล็ก, งานโฆษณาทุกชนิด</p>
+      </div>
+      <div class="footer-column">
+        <h3>ติดต่อเรา</h3>
+        <p>📍 ที่อยู่ : 14/5-6 ถ.สุขุมวิท ต.เนินพระ อ.เมืองระยอง จ.ระยอง 21150</p>
+        <p>📞 โทรศัพท์ : 082-554-5775</p>
+        <p>📧 E-mail : neonanapai@gmail.com</p>
+      </div>
+      <div class="footer-column">
+        <h3>เวลาทำการ</h3>
+        <p>🕘 วันจันทร์ - วันเสาร์ : 09.00 - 18.30 น.</p>
+        <p>❌ วันอาทิตย์ : หยุดทำการ</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="social-icons">
+    <a href="https://www.facebook.com/NeoNanaSign" target="_blank">
+      <img src="icons/facebook.jpg" alt="Facebook">
+    </a>
+    <a href="https://line.me/ti/p/O5ZpgLdVXX" target="_blank">
+      <img src="icons/line.jpg" alt="Line">
+    </a>
+    <a href="tel:0982643711">
+      <img src="icons/phone.jpg" alt="Phone">
+    </a>
+    <a href="https://maps.app.goo.gl/3Kaeb6kRPuCYsS4x8" target="_blank">
+      <img src="icons/map.jpg" alt="Map">
+    </a>
+  </div>
+
+</body>
+</html>
